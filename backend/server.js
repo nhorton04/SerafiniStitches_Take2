@@ -1,10 +1,14 @@
-const express = require('express');
-const dotenv = require('dotenv');
-const products = require('./data/products');
+import express from 'express';
+import dotenv from 'dotenv';
+import connectDB from './config/db.js';
+import products from './data/products.js';
+import colors from 'colors';
 
 dotenv.config();
 
 const app = express();
+
+connectDB();
 
 app.get('/', (req, res) => {
   res.send('Your refrigerator is running...why dont you go catch it?');
@@ -26,6 +30,6 @@ app.listen(
   console.log(
     `${
       process.env.NODE_ENV[0].toUpperCase() + process.env.NODE_ENV.slice(1)
-    } Serve Hair Running on Port ${PORT}`
+    } Serve Hair Running on Port ${PORT}`.green.bold
   )
 );
