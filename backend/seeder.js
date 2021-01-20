@@ -9,6 +9,7 @@ import Order from './models/orderModel.js';
 import connectDB from './config/db.js';
 
 dotenv.config();
+
 connectDB();
 
 const importData = async () => {
@@ -26,6 +27,7 @@ const importData = async () => {
     });
 
     await Product.insertMany(sampleProducts);
+
     console.log('Data Imported!'.green.inverse);
     process.exit();
   } catch (error) {

@@ -7,7 +7,7 @@ import Loader from '../components/Loader';
 import FormContainer from '../components/FormContainer';
 import { login } from '../actions/userActions';
 
-const LoginScreen = ({ history, location }) => {
+const LoginScreen = ({ location, history }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -44,6 +44,7 @@ const LoginScreen = ({ history, location }) => {
             onChange={(e) => setEmail(e.target.value)}
           ></Form.Control>
         </Form.Group>
+
         <Form.Group controlId='password'>
           <Form.Label>Password</Form.Label>
           <Form.Control
@@ -57,18 +58,16 @@ const LoginScreen = ({ history, location }) => {
         <Button type='submit' variant='primary'>
           Sign In
         </Button>
-
-        <Row className='py-3'>
-          <Col>
-            New Customer?{' '}
-            <Link
-              to={redirect ? `/register?redirect=${redirect}` : '/register'}
-            >
-              Register
-            </Link>
-          </Col>
-        </Row>
       </Form>
+
+      <Row className='py-3'>
+        <Col>
+          New Customer?{' '}
+          <Link to={redirect ? `/register?redirect=${redirect}` : '/register'}>
+            Register
+          </Link>
+        </Col>
+      </Row>
     </FormContainer>
   );
 };
