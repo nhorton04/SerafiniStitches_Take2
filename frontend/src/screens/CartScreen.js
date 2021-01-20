@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Row,
   Col,
@@ -17,6 +17,7 @@ const CartScreen = ({ match, location, history }) => {
   const productId = match.params.id;
 
   const qty = location.search ? Number(location.search.split('=')[1]) : 1;
+
   const dispatch = useDispatch();
 
   const cart = useSelector((state) => state.cart);
@@ -57,7 +58,6 @@ const CartScreen = ({ match, location, history }) => {
                   </Col>
                   <Col md={2}>${item.price}</Col>
                   <Col md={2}>
-                    {' '}
                     <Form.Control
                       as='select'
                       value={item.qty}
@@ -95,7 +95,7 @@ const CartScreen = ({ match, location, history }) => {
             <ListGroup.Item>
               <h2>
                 Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
-                items{' '}
+                items
               </h2>
               $
               {cartItems
@@ -109,8 +109,7 @@ const CartScreen = ({ match, location, history }) => {
                 disabled={cartItems.length === 0}
                 onClick={checkoutHandler}
               >
-                Checkout
-                <i className='fas fa-receipt'> </i>
+                Proceed To Checkout
               </Button>
             </ListGroup.Item>
           </ListGroup>
